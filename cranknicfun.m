@@ -1,0 +1,6 @@
+function z=cranknicfun(w)
+  global glob_h glob_t glob_y glob_odefun;
+  z=w - glob_y - ...
+    0.5*glob_h*(feval(glob_odefun,glob_t,w) + ...
+    feval(glob_odefun,glob_t,glob_y));
+end
