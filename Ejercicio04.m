@@ -4,12 +4,13 @@ clc
 f = inline('0*x', 'x');
 
 a = 0; b = 1;
+
 h = 0.1
 N = ((b - a) / h) - 1; %Numero Nodos internos
+
 V1 = 1; V2 = 25; V3 = 100;
-mu = 1;
-eta = V1;
-sigma = 0;
+
+mu = 1; eta = V1; sigma = 0;
 
 ua = 0; ub = 1; % Contorno
 

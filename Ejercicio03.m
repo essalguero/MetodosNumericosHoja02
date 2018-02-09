@@ -9,17 +9,26 @@ D = 8.8 * 10^7;
 q = 200;
 l = 50;
 
-WInit = 0;
-WFin = 1;
+a = 0;
+b = l;
+
+Wa = 0;
+Wl = 0;
 
 mu = 1;
 eta = 0;
 sigma = -S / D;
 
-f = inline('-(((q * l)/(2 * D)) * x) + (((q)/(2 * D)) * x ^2)', 'x')
+%f = inline('-(((q * l)/(2 * D)) * x) + (((q)/(2 * D)) * x .^2)', 'x')
 
-h = 1
+f = @(x) ((-q * l) / (2 * D)) .* x + ((q / (2 * D)) .* x.^2);
 
-N = ((WFin - WInit) / h) - 1 %Numero Nodos internos
 
-[x1, u1] = bvp(WInit, WFin, N, mu, eta, sigma, f, 0, 1)
+h = 1;
+
+N = ((l - 0) / h) - 1 %Numero Nodos internos
+
+[x1, u1] = bvp(a, b, N, mu, eta, sigma, f, Wa, Wl)
+
+% Hay partes de la placa en la que la deflexion es mayor de abs(1)
+
