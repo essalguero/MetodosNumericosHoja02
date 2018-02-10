@@ -1,17 +1,29 @@
-clear all
+clear
 clc
 
+format long
 
-T = 30; L = 2; alpha = 0.004
+f = @(x, y) 8 * pi^2 * sin(2 * pi .* x) * cos(2 * pi .* y)
+DeltaU = f;
+h1 = 1 / 10;
+h2 = 1 / 20;
 
-theta = 0; %Euler Explicito
+a = 0; b = 1; c = 0; d = 1;
 
-f = @(x, t) 2 - x + exp(-2 * t)
-g = @(x, t) (2 / (1 + (t - (1 / 2))^2)) - x.*(2 - x)
+bound = @(x) sin(2 * pi * x)
 
-u0 = inline('2.*(1 - x).^2.*(heaviside(x-1/2)-heaviside(x-3/2))', 'x')
+uex = @(x, y) sin(2 * pi * x) * cos(2 * pi * y)
 
-xspan = [0, L]
-tspan = [0, T]
-nstep = [L / 0.02, T / 0.06]
-heattheta(xspan, tspan, nstep, theta, alpha, u0, g, f)
+[u1, x1, y1, error1] = poissonfd(a, c, b, d, (b - a) / h1, (b - a) / h1, f, bound, uex);
+[u2, x2, y2, error2] = poissonfd(a, c, b, d, (b - a) / h2, (b - a) / h2, f, bound, uex);
+
+u1
+u2
+
+printf("Error1: %f\n", error1);
+printf("Error2: %f\n", error2);
+
+mesh(x1, y1, u1);
+mesh(x2, y2, u2);
+
+uex(x1, y1) - error1
