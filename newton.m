@@ -20,13 +20,13 @@ x = x0;
 fx = fun(x,varargin{:});
 dfx = dfun(x,varargin{:});
 niter = 0; diff = tol+1;
-while diff >= tol & niter < nmax
+while diff >= tol && niter < nmax
    niter = niter + 1;      diff = - fx/dfx;
    x = x + diff;           diff = abs(diff);
    fx = fun(x,varargin{:});
    dfx = dfun(x,varargin{:});
 end
-if (niter==nmax & diff > tol)
+if (niter==nmax && diff > tol)
   fprintf(['Newton si e'' arrestato senza aver ',...
    'soddisfatto l''accuratezza richiesta, avendo\n',...
    'raggiunto il massimo numero di iterazioni\n']);

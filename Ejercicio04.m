@@ -14,9 +14,9 @@ mu = 1; eta = V1; sigma = 0;
 
 ua = 0; ub = 1; % Contorno
 
-[x1, u1] = bvp(a, b, N, mu, V1, sigma, f, ua, ub)
-[x2, u2] = bvp(a, b, N, mu, V2, sigma, f, ua, ub)
-[x3, u3] = bvp(a, b, N, mu, V3, sigma, f, ua, ub)
+[x1, u1] = bvp(a, b, N, mu, V1, sigma, f, ua, ub);
+[x2, u2] = bvp(a, b, N, mu, V2, sigma, f, ua, ub);
+[x3, u3] = bvp(a, b, N, mu, V3, sigma, f, ua, ub);
 
 sol1 = inline('(exp(V1 * x) - 1) ./ (exp(V1) - 1)', 'x')
 sol2 = inline('(exp(V2 * x) - 1) ./ (exp(V2) - 1)', 'x')

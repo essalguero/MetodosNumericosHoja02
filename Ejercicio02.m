@@ -30,17 +30,6 @@ else
 end
 
 
-
-%figure
-%plot(t1, errorRk2)
-%title("Error")
-%legend("Error errorRk2")
-%
-%figure
-%plot(t2, errorRk3)
-%title("Error")
-%legend("Error errorRk3")
-
 %Calcular las soluciones exactas
 soluciones = zeros(rows(t1), 2);
 for i = 1:rows(t1)
@@ -78,6 +67,13 @@ plot(I, sol(I))
 title("Funcion original")
 legend("Sol")
 
+minimoRK2 = min(find(y1 < 0.4)) * h1
+maximoRK2 = max(find(y1 < 0.4)) * h1
+
+figure
+plot(I, sol(I))
+title("Funcion RK2")
+legend("RK2")
 
 minimoRK3 = min(find(y2 < 0.4)) * h1
 maximoRK3 = max(find(y2 < 0.4)) * h1
