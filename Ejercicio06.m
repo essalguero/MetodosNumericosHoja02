@@ -84,9 +84,7 @@ df = @(x) (1/alpha) * (((1/2) .* x.^2) - (2 .* x) + (4/3));
 
 rangoNewton = [zero1, zero2]
 
-uex(zero1)
 
-rangoNewtonPuntoFijo = [zero1-0.1, zero2 + 0.1];
 printf("\n\n\nApartado d.iii\n\n");
 
 phi = @(x) x - (uex75(x) / df(x));
