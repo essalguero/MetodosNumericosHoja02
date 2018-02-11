@@ -1,4 +1,4 @@
-function [xh,uh]=bvp(a,b,N,mu,eta,sigma,bvpfun,...
+function [xh,uh]=bvp_contracorriente(a,b,N,mu,eta,sigma,bvpfun,...
                     ua,ub,varargin)
 %BVP  Solves two-point boundary value problems.
 %  [XH,UH]=BVP(A,B,N,MU,ETA,SIGMA,BVPFUN,UA,UB)
@@ -19,7 +19,10 @@ function [xh,uh]=bvp(a,b,N,mu,eta,sigma,bvpfun,...
 h = (b-a)/(N+1);
 xh = (linspace(a,b,N+2))';
 hm = mu/h^2;
-hd = eta/(2*h);
+
+%hd = eta/(2*h);
+hd = ((1 / 2) + (abs(eta) / 2 * eta))
+
 e =ones(N,1);
 A = spdiags([-hm*e-hd (2*hm+sigma)*e -hm*e+hd],...
     -1:1, N, N);

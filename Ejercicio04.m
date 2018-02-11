@@ -37,3 +37,26 @@ subplot(1, 3, 3)
 plot(x3, u3, x3, sol3(x3))
 legend('aprox', 'exacta');
 title('V = 100');
+
+
+
+[x4, u4] = bvp_contracorriente(a, b, N, mu, V1, sigma, f, ua, ub);
+[x5, u5] = bvp_contracorriente(a, b, N, mu, V2, sigma, f, ua, ub);
+[x6, u6] = bvp_contracorriente(a, b, N, mu, V3, sigma, f, ua, ub);
+
+figure
+subplot(1, 3, 1)
+plot(x4, u4, x4, sol1(x4))
+legend('aprox', 'exacta');
+title('V = 1');
+
+subplot(1, 3, 2)
+plot(x5, u5, x5, sol2(x5))
+legend('aprox', 'exacta');
+title('V = 25');
+
+subplot(1, 3, 3)
+plot(x6, u6, x6, sol3(x6))
+legend('aprox', 'exacta');
+title('V = 100');
+
